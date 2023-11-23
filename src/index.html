@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crie senhas fortes e seguras com nossa ferramenta online. Gere e verifique senhas facilmente. Desenvolvido por Lucas Biazon Palma.">
     <link rel="stylesheet" href="../dist/output.css">
+    <link rel="shortcut icon" href="../src/assets/icon.ico" type="image/x-icon">
     <script src="script.js" defer></script>
     <title>Cipher Craft</title>
 </head>
@@ -32,11 +34,11 @@
 
     </header>
 
-    <main class="h-main py-6 px-12 flex items-center flex-col justify-center bg-gradient-to-br from-[#531958] to-gray-950">
+    <main class="h-auto sm:h-main relative py-6 px-12 flex items-center flex-col justify-center bg-gradient-to-br from-[#cfa4d3] to-[#6a4674]">
         <form action="" id="generatorForm"
-        class="flex flex-col gap-12 items-center max-w-xl">
-            <div class="flex flex-col gap-8">
-                <h2 class="text-4xl sm:text-5xl  text-gray-300 font-semibold mb-4">
+        class="max-w-xl  ">
+            <div class="flex flex-col gap-8 mb-12">
+                <h2 class="text-4xl sm:text-5xl  text-zinc-700 font-semibold mb-4">
                     Password Generator
                 </h2>
 
@@ -55,7 +57,7 @@
                     <p class="text-xl text-neutral-100">Characters:</p>
                     <div class="w-full flex items-center gap-4">
                         <input id="characters" type="range" min="4" max="12" value="4"
-                        class="w-3/4 h-3 py-2 px-4 outline-none bg-gray-200 rounded-lg range-lg appearance-none cursor-pointer [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[25px] [&::-webkit-slider-thumb]:w-[25px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-purple-500">
+                        class="w-3/4 h-3 py-2 px-4 outline-none bg-neutral-100 rounded-lg range-lg appearance-none cursor-pointer [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[25px] [&::-webkit-slider-thumb]:w-[25px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-purple-500">
                         <span id="charactersNumber"
                         class="text-xl text-neutral-100 w-1/4 flex justify-center">
                             4
@@ -99,28 +101,70 @@
                     </div>
                 </div>
             </div>
-            <button type="button" onclick="Esconder()"
-            class="rounded-3xl  text-2xl font-semibold w-2/4 h-10 text-neutral-100 bg-gradient-to-br from-[#531958] to-purple-500 border-0 hover:border-neutral-50 hover:border-2">
-        Verificator
-    </button>
+            <div class="flex justify-center w-full">
+                <button type="button" onclick="Esconder()"
+                 class="rounded-3xl  text-2xl font-semibold w-2/4 h-10 text-neutral-100 bg-purple-700 border-0 hover:border-neutral-50 hover:border-2">
+                     Verificator
+                </button>
+            </div>
         </form>
       
-        <form action="" id="verificatorForm" class="hidden" >
-            <h2 class="text-4xl">Password verificator</h2>
-            <div>
-                <input type="text" name="" id="">
-                <button type="submit">Verificator</button>
+        <form action="" id="verificatorForm" class="flex flex-col hidden gap-12 items-center max-w-xl" >
+            <div class="flex flex-col gap-8">
+                <h2 class="text-4xl sm:text-5xl  text-zinc-700 font-semibold mb-4">
+                    Password Verificator
+                </h2>
+                <div class="w-full flex gap-4">
+                    <div class="w-4/5 flex flex-col gap-4">
+                        <input type="text" placeholder="Coloque sua senha aqui" id="inputVerificar" oninput="VerificarSenha()"
+                        class="h-12 truncate w-full outline-0 border-0 flex items-center px-4 text-zinc-500 font-semibold bg-white rounded-2xl cursor-pointer">
+                        <p id="verificationBad"class="hidden  font-bold tracking-wider px-4 flex items-center gap-2 text-red-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+                              </svg>
+                              Fraca!
+                        </p>
+                        <p id="verificationOk"class="hidden font-sans font-bold tracking-wider px-4 flex items-center gap-2 text-orange-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5m3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5m4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5"/>
+                            </svg>
+                            Ok!
+                        </p>
+                        <p id="verificationGood"class=" hidden  font-bold tracking-wider px-4  flex items-center gap-2 text-green-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+                            </svg>
+                            Good!
+                        </p>
+                    </div>
+                    <button type="submit" onclick="VerificarSenha()"
+                    class="h-12 p-2 outline-none bg-violet-800 rounded-xl text-xl text-neutral-100 shadow-none hover:bg-purple-800 hover:shadow-[0px_0px_15px_-5px_rgba(204,100,204,0.8)]">
+                        Verificator
+                    </button>
+                </div>
+                <ul class="flex flex-wrap items-center h-16 mb-4 max-w-[400px]:">
+                    <li id="list8" class="text-zinc-300 text-lg font-semibold list-disc basis-1/2 list-inside">8+ characters</li>
+                    <li id="listU" class="text-zinc-300 text-lg font-semibold list-disc basis-1/2 list-inside">Uppercase</li>
+                    <li id="listL" class="text-zinc-300 text-lg font-semibold list-disc basis-1/2 list-inside">Lower case</li>
+                    <li id="listN" class="text-zinc-300 text-lg font-semibold list-disc basis-1/2 list-inside">Numbers</li>
+                    <li id="listS" class="text-zinc-300 text-lg font-semibold list-disc basis-1/2 list-inside">Special characters</li>
+                </ul>
             </div>
-            <ul>
-                <li>8+ characters</li>
-                <li>Uppercase</li>
-                <li>Lower case</li>
-                <li>Numbers</li>
-                <li>Special characters</li>
-            </ul>
-            <button type="button" onclick="Esconder()">Generator</button>
+            <button type="button" onclick="Esconder()"
+            class="rounded-3xl  text-2xl font-semibold w-2/4 h-10 text-neutral-100 bg-purple-700 border-0 hover:border-neutral-50 hover:border-2">
+                Generator
+            </button>
         </form>
         
+        <div id="copiar"class="hidden absolute  items-center justify-center h-20 bg-[#16091b] left-0 top-3 w-1/6 rounded-r-3xl text-2xl px-2 text-gray-50">
+            Click na senha para copiar
+        </div>
+        <div id="copiado"class="hidden flex items-center justify-center absolute h-20 bg-[#16091b] left-0 top-3 w-1/6 rounded-r-3xl text-2xl px-2 text-gray-50">
+            Copiado
+        </div>
     </main>
 
 

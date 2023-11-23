@@ -1,27 +1,24 @@
-const verificatorForm = document.querySelector("#verificatorForm")
 const generatorForm = document.querySelector("#generatorForm")
-
-function Esconder(){
-    verificatorForm.classList.toggle("hidden")
-    generatorForm.classList.toggle("hidden")
-}
 
 const btGenerator = document.querySelector("#btGenerator")
 const characters = document.querySelector("#characters")
 const charactersNumber = document.querySelector("#charactersNumber")
 const result = document.querySelector("#result")
-
 const uppercase = document.querySelector("#uppercase")
 const lowercase = document.querySelector('#lowercase')
 const numbers = document.querySelector('#numbers')
 const special = document.querySelector('#special')
 
-const letrasMaiusculas = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
-const letrasMinusculas = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i));
-const numeros = Array.from({ length: 10 }, (_, i) => String(i));
-const caracteresEspeciais = ['!', '@', '#', '$', '%', '&', '*', '/', '.', ';'];
-const gerador = [ letrasMaiusculas, letrasMinusculas, numeros, caracteresEspeciais]
+const verificatorForm = document.querySelector("#verificatorForm")
+const inputVerificar = document.querySelector("#inputVerificar")
+const fraca = document.querySelector("#verificationBad")
+const ok = document.querySelector("#verificationOk")
+const good = document.querySelector("#verificationGood")
 
+function Esconder(){
+    verificatorForm.classList.toggle("hidden")
+    generatorForm.classList.toggle("hidden")
+}
 generatorForm.addEventListener('submit', (event) => { 
     event.preventDefault()
 })
@@ -33,13 +30,23 @@ generatorForm.addEventListener('keypress', (event) => {
     }
 })
 
+verificatorForm.addEventListener('submit', (event) => { 
+    event.preventDefault()
+})
+
+
+const letrasMaiusculas = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+const letrasMinusculas = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i));
+const numeros = Array.from({ length: 10 }, (_, i) => String(i));
+const caracteresEspeciais = ['!', '@', '#', '$', '%', '&', '*', '/', '.', ';'];
+const gerador = [ letrasMaiusculas, letrasMinusculas, numeros, caracteresEspeciais]
+
 btGenerator.addEventListener('click', () => Gerar())
 characters.addEventListener("input", () => {
     charactersNumber.innerHTML = parseInt(characters.value)
 })
 
 function Gerar(){
-
     const tamanho = parseInt(characters.value)
     let password = ""
     const checkboxes = [uppercase, lowercase, numbers, special];
@@ -62,6 +69,21 @@ function Gerar(){
         password += selectedCharacter
     }
     result.innerHTML = password
+    setTimeout(() => document.querySelector("#copiar").classList.remove("hidden"), 1000)
+    setTimeout(() => document.querySelector("#copiar").classList.add("hidden"), 3000)
+    
+    result.addEventListener('click', () => {
+        if (password) {
+            navigator.clipboard.writeText(password)
+                .then(() => {
+                    setTimeout(() => document.querySelector("#copiado").classList.remove("hidden"), 1000)
+                    setTimeout(() => document.querySelector("#copiado").classList.add("hidden"), 3000)
+                })
+                .catch(err => {
+                    
+                });
+        }
+    });
 }
 
 function VerificarCheckbox(positionGerador){
@@ -88,4 +110,94 @@ function VerificarCheckbox(positionGerador){
             break
     }
     return true
+}
+function VerificarSenha() {
+    let senha = inputVerificar.value
+    let cont = 0
+    let contUp = 0
+    let contLower = 0
+    let contNum = 0
+    let contS = 0
+
+    if(senha.length >= 8){
+        cont++
+        document.querySelector("#list8").classList.add("text-zinc-600")
+        document.querySelector("#list8").classList.add("line-through")
+    }
+
+    for (let i = 0; i < senha.length; i++) {
+        if (letrasMaiusculas.includes(senha[i])) {
+            if(contUp == 0){
+                contUp++
+                document.querySelector("#listU").classList.add("text-zinc-600")
+                document.querySelector("#listU").classList.add("line-through")
+            }
+            continue
+        }
+        if (letrasMinusculas.includes(senha[i])) {
+            if(contLower == 0 ){
+                contLower++
+                document.querySelector("#listL").classList.add("text-zinc-600")
+                document.querySelector("#listL").classList.add("line-through")
+            }
+            
+            continue
+        }
+        if (caracteresEspeciais.includes(senha[i])) {
+            if(contS == 0 ){
+                contS++
+                document.querySelector("#listS").classList.add("text-zinc-600")
+                document.querySelector("#listS").classList.add("line-through")
+            }
+            
+            continue
+        }
+        if (numeros.includes(senha[i])) {
+            if(contNum == 0 ){
+                contNum++
+                document.querySelector("#listN").classList.add("text-zinc-600")
+                document.querySelector("#listN").classList.add("line-through")
+            }
+            
+            continue
+        }
+    }
+    cont += contUp + contS + contLower + contNum
+    
+    if(cont <= 2 && cont != 0){
+        inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+
+        fraca.classList.remove("hidden")
+        ok.classList.add("hidden")
+        good.classList.add("hidden")
+    }else if(cont <= 4 && cont != 0){
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
+        inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+        ok.classList.remove("hidden")
+        fraca.classList.add("hidden")
+        good.classList.add("hidden")
+    }else if(cont != 0){
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
+        inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+        good.classList.remove("hidden")
+        fraca.classList.add("hidden")
+        ok.classList.add("hidden")
+    }
+    
+    if(cont == 0){
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
+        inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+        fraca.classList.add("hidden")
+        ok.classList.add("hidden")
+        good.classList.add("hidden")
+
+    }
+  
+   
+
 }
