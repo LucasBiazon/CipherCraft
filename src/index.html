@@ -30,17 +30,17 @@
         </div>
     </header>
 
-    <main class="h-full py-6 px-12 flex items-center justify-center bg-gradient-to-br from-[#531958] to-gray-950">
-        <form action="" class="flex flex-col gap-8 mb-16">
-            <h2 class="text-5xl text-gray-300 font-semibold mb-4">
+    <main class="h-main py-6 px-12 flex items-center flex-col justify-center bg-gradient-to-br from-[#531958] to-gray-950">
+        <form action="" class="flex flex-col gap-8 mb-16 max-w-xl">
+            <h2 class="text-4xl sm:text-5xl  text-gray-300 font-semibold mb-4">
                 Password Generator
             </h2>
             <div class="w-full flex gap-4">
-                <div id="result" class="h-12 w-4/5 flex items-center px-2 bg-white rounded-2xl cursor-pointer">
-                    Your password
+                <div id="result" class="h-12 w-4/5 flex items-center px-4 text-zinc-500 bg-white rounded-2xl cursor-pointer">
+                    Your generated password
                 </div>
                 <button type="submit"
-                    class="h-12 p-2 bg-violet-800 rounded-xl text-xl text-neutral-100">
+                    class="h-12 p-2 bg-violet-800 rounded-xl text-xl text-neutral-100 shadow-none hover:bg-purple-800 hover:shadow-[0px_0px_15px_-5px_rgba(204,100,204,0.8)]">
                     Generate
                 </button>
             </div>
@@ -49,33 +49,37 @@
                 <p class="text-xl text-neutral-100">Characters:</p>
                 <div class="w-full flex items-center gap-4">
                     <input id="minmax-range" type="range" min="4" max="12" value="4"
-                        class="w-3/4 h-3 py-2 px-4 bg-gray-200 rounded-lg range-lg appearance-none cursor-pointer">
+                        class="w-3/4 h-3 py-2 px-4 bg-gray-200 rounded-lg range-lg appearance-none cursor-pointer
+                        [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[25px] [&::-webkit-slider-thumb]:w-[25px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-purple-500">
                     <span class="text-xl text-neutral-100 w-1/4 flex justify-center">4</span>
                 </div>
             </div>
            
-            <div>
-                <input type="checkbox" name="" id="" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
-                <label for="" class="text-xl text-neutral-100">Uppercase (A,B...)</label>
-            </div>
-            <div >
-                <input type="checkbox" name="" id=""  value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
-                <label for="" class="text-xl text-neutral-100">lower case (a,b...)</label>
-            </div>
-            <div >
-                <input type="checkbox" name="" id="" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
-                <label for="" class="text-xl text-neutral-100">Numbers</label>
-            </div>
-            <div >
-                <input type="checkbox" name="" id="" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="" class="text-xl text-neutral-100">Special characters (*,!...)</label>
-            </div>
-        </div>
-            <button type="button"
-                class="rounded-3xl text-2xl w-2 text-neutral-100 bg-gradient-to-br from-[#531958] to-purple-500"
-                >Verificator</button>
-        </form>
 
+            <div class="flex flex-wrap gap-6 flex-col sm:flex-row">
+                <div class="w-full sm:w-[45%]  flex items-center gap-2">
+                    <input type="checkbox" name="" id="" value="1" checked
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-purple-500 checked:bg-purple-500 checked:before:bg-purple-500 hover:before:opacity-10">
+                    <label for="" class="text-xl text-neutral-100">Uppercase (A,B...)</label>
+                </div>
+                <div class="w-full sm:w-[45%] flex items-center gap-2">
+                    <input type="checkbox" name="" id=""  flex value="1"  checked
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-purple-500 checked:bg-purple-500 checked:before:bg-purple-500 hover:before:opacity-10">                    <label for="" class="text-xl text-neutral-100">lower case (a,b...)</label>
+                </div>
+                <div class="w-full sm:w-[45%] flex items-center gap-2">
+                    <input type="checkbox" name="" id="" value="1" checked
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-purple-500 checked:bg-purple-500 checked:before:bg-purple-500 hover:before:opacity-10">                    <label for="" class="text-xl text-neutral-100">Numbers</label>
+                </div>
+                <div class="w-full sm:w-[45%] flex items-center gap-2">
+                    <input type="checkbox" name="" id="" value="1" checked
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-purple-500 checked:bg-purple-500 checked:before:bg-purple-500 hover:before:opacity-10">                    <label for="" class="text-xl text-neutral-100">Special characters (*,!...)</label>
+                </div>
+            </div>
+        </form>
+        <button type="button"
+                class="rounded-3xl max-w-xl text-2xl font-semibold w-2/4 h-10 text-neutral-100 bg-gradient-to-br from-[#531958] to-purple-500 border-0 hover:border-neutral-50 hover:border-2">
+            Verificator
+        </button>
         <form action="" class="hidden">
             <h2 class="text-4xl">Password verificator</h2>
             <div>
