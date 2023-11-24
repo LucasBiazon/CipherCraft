@@ -10,13 +10,14 @@ const numbers = document.querySelector('#numbers')
 const special = document.querySelector('#special')
 
 const verificatorForm = document.querySelector("#verificatorForm")
+const divVerificator = document.querySelector("#divVerificator")
 const inputVerificar = document.querySelector("#inputVerificar")
 const fraca = document.querySelector("#verificationBad")
 const ok = document.querySelector("#verificationOk")
 const good = document.querySelector("#verificationGood")
 
 function Esconder(){
-    verificatorForm.classList.toggle("hidden")
+    divVerificator.classList.toggle("hidden")
     generatorForm.classList.toggle("hidden")
 }
 generatorForm.addEventListener('submit', (event) => { 
@@ -118,13 +119,18 @@ function VerificarSenha() {
     let contLower = 0
     let contNum = 0
     let contS = 0
+    let cont8 = 0
 
     if(senha.length >= 8){
-        cont++
+        if(cont8 == 0){
+        cont8++
         document.querySelector("#list8").classList.add("text-zinc-600")
         document.querySelector("#list8").classList.add("line-through")
+        }
+    }else{
+        document.querySelector("#list8").classList.remove("text-zinc-600")
+        document.querySelector("#list8").classList.remove("line-through")
     }
-
     for (let i = 0; i < senha.length; i++) {
         if (letrasMaiusculas.includes(senha[i])) {
             if(contUp == 0){
@@ -140,7 +146,6 @@ function VerificarSenha() {
                 document.querySelector("#listL").classList.add("text-zinc-600")
                 document.querySelector("#listL").classList.add("line-through")
             }
-            
             continue
         }
         if (caracteresEspeciais.includes(senha[i])) {
@@ -162,7 +167,7 @@ function VerificarSenha() {
             continue
         }
     }
-    cont += contUp + contS + contLower + contNum
+    cont += contUp + contS + contLower + contNum + cont8
     
     if(cont <= 2 && cont != 0){
         inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
@@ -195,9 +200,24 @@ function VerificarSenha() {
         fraca.classList.add("hidden")
         ok.classList.add("hidden")
         good.classList.add("hidden")
-
     }
-  
+
+    if(contUp != 1){
+        document.querySelector("#listU").classList.remove("text-zinc-600")
+        document.querySelector("#listU").classList.remove("line-through")
+    }
+    if(contNum != 1){
+        document.querySelector("#listN").classList.remove("text-zinc-600")
+        document.querySelector("#listN").classList.remove("line-through")
+    }
+    if(contLower != 1){
+        document.querySelector("#listL").classList.remove("text-zinc-600")
+        document.querySelector("#listL").classList.remove("line-through")
+    }
+    if(contS != 1){
+        document.querySelector("#listS").classList.remove("text-zinc-600")
+        document.querySelector("#listS").classList.remove("line-through")
+    }
    
 
 }
