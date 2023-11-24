@@ -642,6 +642,10 @@ html {
   width: 100%;
 }
 
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .max-w-\[400px\] {
   max-width: 400px;
 }
