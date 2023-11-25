@@ -124,18 +124,18 @@ function VerificarSenha() {
     if(senha.length >= 8){
         if(cont8 == 0){
         cont8++
-        document.querySelector("#list8").classList.add("text-zinc-600")
+        document.querySelector("#list8").classList.add("text-zinc-400")
         document.querySelector("#list8").classList.add("line-through")
         }
     }else{
-        document.querySelector("#list8").classList.remove("text-zinc-600")
+        document.querySelector("#list8").classList.remove("text-zinc-400")
         document.querySelector("#list8").classList.remove("line-through")
     }
     for (let i = 0; i < senha.length; i++) {
         if (letrasMaiusculas.includes(senha[i])) {
             if(contUp == 0){
                 contUp++
-                document.querySelector("#listU").classList.add("text-zinc-600")
+                document.querySelector("#listU").classList.add("text-zinc-400")
                 document.querySelector("#listU").classList.add("line-through")
             }
             continue
@@ -143,7 +143,7 @@ function VerificarSenha() {
         if (letrasMinusculas.includes(senha[i])) {
             if(contLower == 0 ){
                 contLower++
-                document.querySelector("#listL").classList.add("text-zinc-600")
+                document.querySelector("#listL").classList.add("text-zinc-400")
                 document.querySelector("#listL").classList.add("line-through")
             }
             continue
@@ -151,7 +151,7 @@ function VerificarSenha() {
         if (caracteresEspeciais.includes(senha[i])) {
             if(contS == 0 ){
                 contS++
-                document.querySelector("#listS").classList.add("text-zinc-600")
+                document.querySelector("#listS").classList.add("text-zinc-400")
                 document.querySelector("#listS").classList.add("line-through")
             }
             
@@ -160,7 +160,7 @@ function VerificarSenha() {
         if (numeros.includes(senha[i])) {
             if(contNum == 0 ){
                 contNum++
-                document.querySelector("#listN").classList.add("text-zinc-600")
+                document.querySelector("#listN").classList.add("text-zinc-400")
                 document.querySelector("#listN").classList.add("line-through")
             }
             
@@ -173,7 +173,7 @@ function VerificarSenha() {
         inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
-
+        inputVerificar.classList.remove("shadow-[7px_7px_17px_-10px_rgba(217,204,217,1);]")
         fraca.classList.remove("hidden")
         ok.classList.add("hidden")
         good.classList.add("hidden")
@@ -181,6 +181,7 @@ function VerificarSenha() {
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
         inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+        inputVerificar.classList.remove("shadow-[7px_7px_17px_-10px_rgba(217,204,217,1);]")
         ok.classList.remove("hidden")
         fraca.classList.add("hidden")
         good.classList.add("hidden")
@@ -188,6 +189,7 @@ function VerificarSenha() {
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
         inputVerificar.classList.add("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+        inputVerificar.classList.remove("shadow-[7px_7px_17px_-10px_rgba(217,204,217,1);]")
         good.classList.remove("hidden")
         fraca.classList.add("hidden")
         ok.classList.add("hidden")
@@ -197,25 +199,26 @@ function VerificarSenha() {
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(171,27,27,0.75);]")
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(240,149,40,0.75);]")
         inputVerificar.classList.remove("shadow-[0px_0px_20px_2px_rgba(46,230,73,0.75);]")
+        inputVerificar.classList.add("shadow-[7px_7px_17px_-10px_rgba(217,204,217,1);]")
         fraca.classList.add("hidden")
         ok.classList.add("hidden")
         good.classList.add("hidden")
     }
 
     if(contUp != 1){
-        document.querySelector("#listU").classList.remove("text-zinc-600")
+        document.querySelector("#listU").classList.remove("text-zinc-400")
         document.querySelector("#listU").classList.remove("line-through")
     }
     if(contNum != 1){
-        document.querySelector("#listN").classList.remove("text-zinc-600")
+        document.querySelector("#listN").classList.remove("text-zinc-400")
         document.querySelector("#listN").classList.remove("line-through")
     }
     if(contLower != 1){
-        document.querySelector("#listL").classList.remove("text-zinc-600")
+        document.querySelector("#listL").classList.remove("text-zinc-400")
         document.querySelector("#listL").classList.remove("line-through")
     }
     if(contS != 1){
-        document.querySelector("#listS").classList.remove("text-zinc-600")
+        document.querySelector("#listS").classList.remove("text-zinc-400")
         document.querySelector("#listS").classList.remove("line-through")
     }
    
